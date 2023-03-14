@@ -33,6 +33,18 @@
 \usepackage{mathtools}
 \usepackage{hyperref}
 
+\usepackage{contour}
+\usepackage{ulem}
+\renewcommand{\ULdepth}{1.8pt}
+\contourlength{0.8pt}
+
+\newcommand{\myuline}[1]{
+  \uline{\phantom{#1}}%
+  \llap{\contour{white}{#1}}%
+}
+
+
+
 \renewcommand{\arraystretch}{1} 
 
 \title{CS 451 Final Project}
@@ -109,43 +121,43 @@ drivers), and the results of that team over its tenure in F1.
 \section{Physical Design}
 
 Table names are in \textbf{bold and CAPITALIZED}, primary keys are
-\underline{underlined}, and foreign keys are \textit{italicized}. If an
+\myuline{underlined}, and foreign keys are \textit{italicized}. If an
 attribute is a primary key and a foreign key, then it is
-\underline{\textit{underlined and italicized}}. Not
+\myuline{\textit{underlined and italicized}}. Not
 null requirements are indicated. Primary keys and foreign keys are
 always not null.
 
 \begin{itemize}
-    \item \textbf{TEAM}: \underline{team\_id}, name, power\_unit, chasis
+    \item \textbf{TEAM}: \myuline{team\_id}, name, power\_unit, chasis
     \begin{itemize}
         \item not null: power\_unit, chasis
     \end{itemize}
 
-    \item \textbf{DRIVER}: \underline{driver\_id},
+    \item \textbf{DRIVER}: \myuline{driver\_id},
     \textit{team\_team\_id}, code, number, fname, lname, dob
     \begin{itemize}
         \item not null: code, number, fname, lname
     \end{itemize}
 
-    \item \textbf{RESULT}: \underline{\textit{race\_race\_id}},
-    \underline{\textit{race\_season\_year}}, \underline{\textit{driver\_driver\_id}},
+    \item \textbf{RESULT}: \myuline{\textit{race\_race\_id}},
+    \myuline{\textit{race\_season\_year}}, \myuline{\textit{driver\_driver\_id}},
     \textit{points\_position}, fastest\_lap
 
-    \item \textbf{POINTS}: \underline{position}, points
+    \item \textbf{POINTS}: \myuline{position}, points
     \begin{itemize}
         \item not null: points
     \end{itemize}
 
-    \item \textbf{RACE}: \underline{race\_id},
-    \underline{\textit{season\_year}}, \textit{circuit\_circuit\_id},
+    \item \textbf{RACE}: \myuline{race\_id},
+    \myuline{\textit{season\_year}}, \textit{circuit\_circuit\_id},
     date, name 
     \begin{itemize}
         \item not null: date, name
     \end{itemize}
 
-    \item \textbf{SEASON}: \underline{year}
+    \item \textbf{SEASON}: \myuline{year}
 
-    \item \textbf{CIRCUIT}: \underline{circuit\_id}, name, lat, long,
+    \item \textbf{CIRCUIT}: \myuline{circuit\_id}, name, lat, long,
     length, n\_laps
     \begin{itemize}
         \item not null: name, lat, long, length, n\_laps
