@@ -57,8 +57,8 @@ Result of query:
 $result = mysqli_query($conn, $query)
 or die(mysqli_error($conn));
 
-$mask = "| %-10s | %-24s | %-10s |\n";
-$alt_mask = "| %-10s | %-.24s | %-10s |\n";
+$mask = "| %10s | %-24s | %10s |\n";
+$alt_mask = "| %10s | %-.24s | %10s |\n";
 print "<pre>";
 printf($mask, "----------", "------------------------", "----------");
 printf($mask, "position", "team name", "points");

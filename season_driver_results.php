@@ -51,17 +51,17 @@ Result of query:
 $result = mysqli_query($conn, $query)
 or die(mysqli_error($conn));
 
-$mask = "| %-18s | %-18s |\n";
+$mask = "| %-18s | %10s |\n";
 print "<pre>";
-printf($mask, "------------------", "------------------");
-printf($mask, "name", "result");
-printf($mask, "------------------", "------------------");
+printf($mask, "------------------", "----------");
+printf($mask, "name", "points");
+printf($mask, "------------------", "----------");
 while($row = mysqli_fetch_array($result, MYSQLI_BOTH))
 {
     //print "\n";
     printf($mask, "$row[name]", "$row[result]");
 }
-printf($mask, "------------------", "------------------");
+printf($mask, "------------------", "----------");
 print "</pre>";
 
 mysqli_free_result($result);
