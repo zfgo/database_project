@@ -34,7 +34,7 @@ $query = "SELECT r.points_position AS position, CONCAT(d.fname, ' ', d.lname) AS
           FROM f1db.race ra JOIN f1db.result r ON ra.race_id = r.race_race_id AND ra.season_year = r.race_season_year
               JOIN f1db.driver d ON r.driver_driver_id = d.driver_id
               JOIN f1db.points p ON r.points_position = p.position
-          WHERE ra.name LIKE ".$race." AND ra.season_year = ".$season" 
+          WHERE ra.name LIKE '".$race."' AND ra.season_year = ".$season." 
           ORDER BY r.points_position;";
 
 ?>
