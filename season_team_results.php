@@ -64,7 +64,6 @@ printf($mask, "name", "result");
 printf($mask, "------------------------", "------------------");
 while($row = mysqli_fetch_array($result, MYSQLI_BOTH))
 {
-    //print "\n";
     if (strlen("$row[team_name]") > 24)
     {
         printf($alt_mask, "$row[team_name]", "$row[total_points]");
