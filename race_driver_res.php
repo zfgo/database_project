@@ -27,7 +27,7 @@ $race = $_POST['race'];
 $season = $_POST['season'];
 
 $season = mysqli_real_escape_string($conn, $season);
-$season = mysqli_real_escape_string($conn, $race);
+$race = mysqli_real_escape_string($conn, $race);
 // this is a small attempt to avoid SQL injection
 // better to use prepared statements
 
@@ -64,7 +64,7 @@ printf($mask, "----------", "------------------", "----------");
 while($row = mysqli_fetch_array($result, MYSQLI_BOTH))
 {
     //print "\n";
-    printf($mask, "$row[position]", "$row[driver_name]");
+    printf($mask, "$row[position]", "$row[driver_name]", "$row[points]");
 }
 printf($mask, "----------", "------------------", "----------");
 print "</pre>";
