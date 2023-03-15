@@ -1,0 +1,99 @@
+<html>
+<head>
+       <title>CS 451 Final Project</title>
+</head>
+
+<body bgcolor="white">
+
+
+<a href="main.html" >go to the main page</a> 
+
+<h2>Formula 1 Database Project</h2>
+
+CS 451 Final Project
+<br>
+Zane Globus-O'Harra
+<p>
+<hr>
+<p>
+
+Enter a season to display the final driver standings of that season.
+
+<form action="season_driver_results.php" method="POST">
+
+<label for="season">Season:</label>
+<input type="text" name="season"> <br>
+<input type="submit" value="submit">
+<input type="reset" value="erase">
+</form>
+
+<hr>
+<p>
+
+Enter a season to display the final team standings of that season.
+
+<form action="season_team_results.php" method="POST">
+
+<label for="season">Season:</label>
+<input type="text" name="season"> <br>
+<input type="submit" value="submit">
+<input type="reset" value="erase">
+</form>
+
+<hr>
+<p>
+
+<form method="POST" action="race_driver_res.php">
+    <label for="race">Race:</label>
+    <input type="text" id="race" name="race">
+    <!-- Couldn't get the dropdown menu to work, sadly -->
+    <!--
+    <select id="race" name="race">
+        <?php
+        // connect to the DB
+        include('connectionData.txt');
+
+        $conn = mysqli_connect($server, $user, $pass, $dbname, $port)
+        or die('Error connecting to MySQL server.');
+
+        $sql = "SELECT DISTINCT r.name FROM f1db.race AS r";
+        $result = mysqli_query($conn, $sql);
+
+        // output race options as dropdown menu
+        while ($row = mysqli_fetch_array($result))
+        {
+            $therow = row['name'];
+            echo "<option value='.$therow.'>'.$therow.'</option>";
+        }
+
+        // close conn
+        mysqli_free_result($result);
+        mysqli_close($conn);
+
+        ?>
+    </select>
+    -->
+    <br>
+    <label for="season">Season:</label>
+    <input type="text" id="season" name="season">
+    <br>
+    <input type="submit" value="Submit">
+    <input type="reset" value="erase">
+</form>
+
+<hr>
+
+<p>
+<a href="findOrders.txt" >Contents</a> 
+of this page.
+
+<p>
+<a href="findOrderNames.txt" >Contents</a> 
+of the PHP page that gets called.
+
+<p>
+<a href="connectionData.txt" >Contents</a> 
+of the connection data.
+
+</body>
+</html>
