@@ -27,6 +27,9 @@ Enter a season to display the final driver standings of that season.
 <input type="reset" value="erase">
 </form>
 
+<p>
+<a href="season_driver_results.txt" >Contents</a> of the PHP page that gets called.
+
 <hr>
 <p>
 
@@ -40,8 +43,13 @@ Enter a season to display the final team standings of that season.
 <input type="reset" value="erase">
 </form>
 
+<p>
+<a href="season_team_results.txt" >Contents</a> of the PHP page that gets called.
+
 <hr>
 <p>
+
+Enter a race and a season to display the driver standings for that race in that season.
 
 <form method="POST" action="race_driver_res.php">
     <label for="race">Race:</label>
@@ -81,15 +89,31 @@ Enter a season to display the final team standings of that season.
     <input type="reset" value="erase">
 </form>
 
+<p>
+<a href="race_driver_res.txt" >Contents</a> of the PHP page that gets called.
+
 <hr>
+<p>
+
+Enter a race and a season to display the team standings for that race in that season.
+
+<form method="POST" action="race_team_res.php">
+    <label for="race">Race:</label>
+    <input type="text" id="race" name="race">
+    <br>
+    <label for="season">Season:</label>
+    <input type="text" id="season" name="season">
+    <br>
+    <input type="submit" value="Submit">
+    <input type="reset" value="erase">
+</form>
 
 <p>
-<a href="findOrders.txt" >Contents</a> 
-of this page.
+<a href="race_team_res.txt" >Contents</a> of the PHP page that gets called.
+
 
 <p>
-<a href="findOrderNames.txt" >Contents</a> 
-of the PHP page that gets called.
+<a href="findOrders.txt" >Contents</a> of this page.
 
 <p>
 <a href="connectionData.txt" >Contents</a> 
