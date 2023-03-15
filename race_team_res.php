@@ -67,11 +67,11 @@ while($row = mysqli_fetch_array($result, MYSQLI_BOTH))
 {
     if (strlen("$row[team_name]") > 24)
     {
-        printf($alt_mask, "$row[rank]", "$row[team_name]", "$row[points]");
+        printf($alt_mask, "$row[position]", "$row[team_name]", "$row[points]");
     }
     else
     {
-        printf($mask, "$row[rank]", "$row[team_name]", "$row[points]");
+        printf($mask, "$row[position]", "$row[team_name]", "$row[points]");
     }
 }
 printf($mask, "----------", "------------------------", "----------");
