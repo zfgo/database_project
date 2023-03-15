@@ -30,7 +30,7 @@ $season = mysqli_real_escape_string($conn, $season);
 // this is a small attempt to avoid SQL injection
 // better to use prepared statements
 
-$query = "SELECT r.points_position AS position, CONCAT(d.fname, ' ', d.lname) AS driver_name
+$query = "SELECT r.points_position AS position, CONCAT(d.fname, ' ', d.lname) AS driver_name, p.points AS points
           FROM f1db.race ra JOIN f1db.result r ON ra.race_id = r.race_race_id AND ra.season_year = r.race_season_year
               JOIN f1db.driver d ON r.driver_driver_id = d.driver_id
               JOIN f1db.points p ON r.points_position = p.position
@@ -49,23 +49,23 @@ print $query;
 <hr>
 <p>
 Result of query:
-<p
+<p>
 
 <?php
 $result = mysqli_query($conn, $query)
 or die(mysqli_error($conn));
 
-$mask = "| %-18s | %-18s |\n";
+$mask = "| %-10s | %-18s | %-10s |\n";
 print "<pre>";
-printf($mask, "------------------", "------------------");
-printf($mask, "position", "driver");
-printf($mask, "------------------", "------------------");
+printf($mask, "----------", "------------------", "----------");
+printf($mask, "position", "driver", "points");
+printf($mask, "----------", "------------------", "----------");
 while($row = mysqli_fetch_array($result, MYSQLI_BOTH))
 {
     //print "\n";
     printf($mask, "$row[position]", "$row[driver_name]");
 }
-printf($mask, "------------------", "------------------");
+printf($mask, "----------", "------------------", "----------");
 print "</pre>";
 
 mysqli_free_result($result);
