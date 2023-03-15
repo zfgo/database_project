@@ -57,15 +57,22 @@ Result of query:
 $result = mysqli_query($conn, $query)
 or die(mysqli_error($conn));
 
-$mask = "| %-10s | %-18s |\n";
+$mask = "| %-10s | %-24s | %-10s |\n";
+$alt_mask = "| %-10s | %-.24s | %-10s |\n";
 print "<pre>";
 printf($mask, "----------", "------------------");
 printf($mask, "position", "driver");
 printf($mask, "----------", "------------------");
 while($row = mysqli_fetch_array($result, MYSQLI_BOTH))
 {
-    //print "\n";
-    printf($mask, "$row[position]", "$row[driver_name]");
+    if (strlen("$row[team_name]") > 24)
+    {
+        printf($alt_mask, "$row[rank]", "$row[team_name]", "$row[points]");
+    }
+    else
+    {
+        printf($mask, "$row[rank]", "$row[team_name]", "$row[points]");
+    }
 }
 printf($mask, "----------", "------------------");
 print "</pre>";
