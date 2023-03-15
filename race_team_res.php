@@ -30,13 +30,14 @@ $season = mysqli_real_escape_string($conn, $season);
 // this is a small attempt to avoid SQL injection
 // better to use prepared statements
 
-$query = "SELECT r.points_position AS position, CONCAT(d.fname, ' ', d.lname) AS driver_name
+$query = "SELECT @rank:=@rank+1 AS rank, t.name AS team_name, SUM(r.points_position) AS points
           FROM f1db.race ra JOIN f1db.result r ON ra.race_id = r.race_race_id AND ra.season_year = r.race_season_year
               JOIN f1db.driver d ON r.driver_driver_id = d.driver_id
-              JOIN f1db.points p ON r.points_position = p.position
-          WHERE ra.name LIKE '".$race."' AND ra.season_year = ".$season." 
-          ORDER BY r.points_position;";
-
+              JOIN f1db.team t ON d.team_team_id = t.team_id
+              JOIN (SELECT @rank := 0) rnk
+          WHERE ra.name = '".$race."' AND ra.season_year = ".$season."
+          GROUP BY t.name
+          ORDER BY points DESC;";
 ?>
 
 <p>
