@@ -27,6 +27,7 @@ $race = $_POST['race'];
 $season = $_POST['season'];
 
 $season = mysqli_real_escape_string($conn, $season);
+$season = mysqli_real_escape_string($conn, $race);
 // this is a small attempt to avoid SQL injection
 // better to use prepared statements
 

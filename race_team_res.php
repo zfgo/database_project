@@ -27,6 +27,7 @@ $race = $_POST['race'];
 $season = $_POST['season'];
 
 $season = mysqli_real_escape_string($conn, $season);
+$race = mysqli_real_escape_string($conn, $race);
 // this is a small attempt to avoid SQL injection
 // better to use prepared statements
 
@@ -35,7 +36,7 @@ $query = "SELECT @rank:=@rank+1 AS rank, t.name AS team_name, SUM(r.points_posit
               JOIN f1db.driver d ON r.driver_driver_id = d.driver_id
               JOIN f1db.team t ON d.team_team_id = t.team_id
               JOIN (SELECT @rank := 0) rnk
-          WHERE ra.name = '".$race."' AND ra.season_year = ".$season."
+          WHERE ra.name LIKE '".$race."' AND ra.season_year = ".$season."
           GROUP BY t.name
           ORDER BY points DESC;";
 ?>
