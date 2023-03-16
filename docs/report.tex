@@ -46,26 +46,30 @@
 
 \renewcommand{\arraystretch}{1} 
 
-\title{CS 451 Final Project: Formula 1 Database}
+\title{CS 451 Final Project: Formula One Database}
 \author{Zane Globus-O'Harra}
 \date{\textit{23 March 2023}}
 
 \begin{document}
 \maketitle
+\thispagestyle{empty}
 
 \tableofcontents
+\thispagestyle{empty}
 \vspace{1.5cm}
 
 \noindent
 NOTE: All links in this PDF should be clickable.
 \newpage
 
+\pagenumbering{arabic}
+
 \section{Cover Page}
 
 \begin{itemize}
     \item \textbf{Author:} Zane Globus-O'Harra
     
-    \item \textbf{Project Title:} Formula 1 Database
+    \item \textbf{Project Title:} Formula One Database
 
     \item \textbf{Connection Information}
     \begin{itemize}
@@ -93,7 +97,7 @@ NOTE: All links in this PDF should be clickable.
 
 \subsection{High Level Overview}
 The world that will be modeled will be a simplified version of a Formula
-1 (F1) car-racing season. This will include the drivers, the teams the
+One (Formula 1, or F1) car-racing season. This will include the drivers, the teams the
 drivers are in, the races, and the results of those races. 
 
 \subsection{Kinds of Data}
@@ -371,8 +375,11 @@ Examples for each app are as follows:
     \caption{This app displays the two drivers in a team, mainly to
     compare the number of points that each driver has earned, but also
     showing their driver codes, their number, and the number of races
-    they have completed. If a needed a replacement driver for some races
-    during the season, that is displayed here (as is the case with Alfa Romeo).}
+    they have completed. The drivers' ages are also displayed, and it
+    should be noted that these are \textit{not} the drivers' current ages,
+    rather they are the drivers' ages during the specified season. If a
+    needed a replacement driver for some races during the season, that
+    is displayed here (as is the case with Alfa Romeo).}
 \end{figure}
 
 
