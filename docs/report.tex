@@ -54,6 +54,11 @@
 \begin{document}
 \maketitle
 
+\tableofcontents
+
+NOTE: All links in this PDF should be clickable.
+\newpage
+
 \section{Cover Page}
 
 \begin{itemize}
@@ -77,7 +82,8 @@
 
     \end{itemize}
 
-    \item \textbf{Project URL:} TODO
+    \item \textbf{Project URL:}
+    \href{https://ix.cs.uoregon.edu/~zfg/f1db/main.html}{\texttt{https://ix.cs.uoregon.edu/\~{}zfg/f1db/main.html}}
 
     \item \textbf{Highlights:} TODO
 \end{itemize}
@@ -215,15 +221,178 @@ always not null.
 
 \section{User's Guide}
 
-TODO
+\subsection{Basic Overview}
 
-\section{Contents of Tables}
+Each ``application'' is fairly straightforward to use. Most of the
+applications display some variation of the results over a season.
+Seasons are determined by the year, and the only season that has data is
+2021. However, the complete data for every race and every result has
+been entered for the 2021 F1 season, so every query for that season
+should return a fairly ``well-stocked'' set of results.
 
-TODO
+The other fields are fairly picky about what is entered. If a field asks
+for a ``Race,'' it wants that race's full name. The available races are:
+\begin{multicols}{2}
+\begin{itemize}
+    \itemsep-0.1em
+    \item Bahrain Grand Prix
+    \item Emilia Romagna Grand Prix
+    \item Portugese Grand Prix
+    \item Spanish Grand Prix
+    \item Monaco Grand Prix
+    \item Azerbaijan Grand Prix
+    \item French Grand Prix
+    \item Styrian Grand Prix
+    \item Austrian Grand Prix
+    \item British Grand Prix
+    \item Hungarian Grand Prix
+    \item Belgian Grand Prix
+    \item Dutch Grand Prix
+    \item Italian Grand Prix
+    \item Russian Grand Prix
+    \item Turkish Grand Prix
+    \item United States Grand Prix
+    \item Mexico City Grand Prix
+    \item Sao Paulo Grand Prix
+    \item Qatar Grand Prix
+    \item Saudi Arabian Grand Prix
+    \item Abu Dhabi Grand Prix
+\end{itemize}
+\end{multicols}
+
+The same goes for drivers, whose last names are:
+\begin{multicols}{2}
+\begin{itemize}
+    \itemsep-0.1em
+    \item Raikkonen
+    \item Giovinazzi
+    \item Gasly
+    \item Tsunoda
+    \item Alonso
+    \item Ocon
+    \item Vettel
+    \item Stroll
+    \item Leclerc
+    \item Sainz
+    \item Mazepin
+    \item Schumacher
+    \item Ricciardo
+    \item Norris
+    \item Hamilton
+    \item Bottas
+    \item Perez
+    \item Verstappen
+    \item Latifi
+    \item Russell
+    \item Kubica
+\end{itemize}
+\end{multicols}
+
+And lastly, the same goes for the teams:
+
+\begin{multicols}{2}
+\begin{itemize}
+    \itemsep-0.1em
+    \item Mercedes-AMG Petronas F1 Team
+    \item Red Bull Racing Honda
+    \item Scuderia Ferrari
+    \item McLaren F1 Team
+    \item Aston Martin Cognizant F1 Team
+    \item Alpine F1 Team
+    \item Alfa Romeo Racing Orlen
+    \item Scuderia AlphaTauri Honda
+    \item Haas F1 Team
+    \item Williams Racing
+\end{itemize}
+\end{multicols}
+
+\subsection{Examples of Each Application}
+
+Examples for each app are as follows:
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.35]{1.PNG}
+    \caption{This app displays the final driver standings of a season,
+    by summing up the points that each driver has earned over the season
+    and ordering the drivers based on total points earned.}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.35]{2.PNG}
+    \caption{This app displays the final team standings of a season,
+    by summing up the points that each team has earned over the season
+    and ordering the team based on total points earned. Because each
+    team has two drivers, the points that a team earns in a race is the
+    sum of the points of the drivers of that team.}
+\end{figure}
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.35]{3.PNG}
+    \caption{This app displays the driver standings after a race,
+    showing their name, the position they finished in, and the points
+    that they earned.}
+\end{figure}
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.35]{4.PNG}
+    \caption{This app displays the team standings after a race,
+    showing their name, the position they finished in, and the points
+    that they earned. The teams finishing position is determined by the
+    points that the drivers of that team earned.}
+\end{figure}
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.35]{5.PNG}
+    \caption{This app displays, in chronological order across a season,
+    the race results of one driver as well as the points that that
+    driver earned.}
+\end{figure}
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.35]{6.PNG}
+    \caption{This app displays the average position per race and average
+    points per race for every driver in a season, ordered from the highest
+    average points to the lowest.}
+\end{figure}
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.35]{7.PNG}
+    \caption{This app displays information about every race that occurs
+    in a season, including the race name, the circuit at which the race
+    takes place, the date of the race, the length of the circuit, the
+    number of laps, and the total length of the race. The results are
+    ordered chronologically by race date.}
+\end{figure}
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.35]{8.PNG}
+    \caption{This app displays the two drivers in a team, mainly to
+    compare the number of points that each driver has earned, but also
+    showing their driver codes, their number, and the number of races
+    they have completed. If a needed a replacement driver for some races
+    during the season, that is displayed here (as is the case with Alfa Romeo).}
+\end{figure}
+
+
+\section{Contents of the Tables}
+
+The contents of the tables can be found by clicking on the link to the
+table contents from the main project URL, or by going directly to:
+
+\noindent
+\href{https://ix.cs.uoregon.edu/~zfg/f1db/tables.html}{\texttt{https://ix.cs.uoregon.edu/\~{}zfg/f1db/tables.html}}
 
 \section{Implementation Code}
 
-TODO
+The implementation code for the main website can be found via a link at
+the bottom of the main project webpage. The code for each PHP app can be
+found via a link below each submission form. The link to the main
+website is repeated here:
+
+\noindent
+\href{https://ix.cs.uoregon.edu/~zfg/f1db/main.html}{\texttt{https://ix.cs.uoregon.edu/\~{}zfg/f1db/main.html}}
+
 
 \section{Conclusion}
 
