@@ -1,0 +1,28 @@
+<html>
+
+<a href="main.html" >go to the main page</a> 
+
+<h2>Tables in the f1db database</h2>
+<hr>
+<pre>
+<a href="tables/circuit.txt" >circuit table</a> (21 rows)
+
+<a href="tables/driver.txt" >driver table</a> (21 rows)
+
+<a href="tables/points.txt" >points table</a> (20 rows)
+
+<a href="tables/race.txt" >race table</a> (22 rows)
+
+<a href="tables/result.txt" >result table</a> (440 rows)
+
+<a href="tables/season.txt" >season table</a> (1 row)
+
+<a href="tables/team.txt" >team table</a> (10 rows)
+</pre>
+<hr>
+<p>
+
+<a href="tables.txt" >Contents</a> of this page.
+
+</body>
+</html>
