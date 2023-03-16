@@ -163,14 +163,36 @@ Enter a season to display information about each race of the season.
 <a href="season_race_info.txt" >Contents</a> of the PHP page that gets called.
 
 <hr>
+<p>
+
+Enter a team name and a season to display information about that team's drivers during that season.
+
+<form method="POST" action="team_driver_cmp_season.php">
+    <label for="team">Team Name:</label>
+    <input type="text" id="team" name="team">
+    <br>
+    <label for="season">Season:</label>
+    <input type="text" id="season" name="season">
+    <br>
+    <input type="submit" value="submit">
+    <input type="reset" value="erase">
+</form>
+
+<p>
+<a href="team_driver_cmp_season.txt" >Contents</a> of the PHP page that gets called.
+
+<hr>
 
 
 <p>
 <a href="main.txt" >Contents</a> of this page.
 
 <p>
-<a href="connectionData.txt" >Contents</a> 
-of the connection data.
+
+<a href="tables.html" >Contents</a> of the tables.
+
+<p>
+<a href="connectionData.txt" >Contents</a> of the connection data.
 
 </body>
 </html>
