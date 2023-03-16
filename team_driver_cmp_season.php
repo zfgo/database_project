@@ -35,7 +35,7 @@ $query = "SELECT CONCAT(d.fname, ' ', d.lname) as driver_name, d.code AS driver_
           FROM f1db.result r JOIN f1db.driver d ON r.driver_driver_id = d.driver_id
               JOIN f1db.team t ON d.team_team_id = t.team_id
               JOIN f1db.points p ON r.points_position = p.position
-          WHERE t.name LIKE ".$team." AND r.season_year = ".$season."
+          WHERE t.name LIKE '".$team."' AND r.race_season_year = ".$season."
           GROUP BY d.driver_id, d.fname, d.lname, d.code, d.number
           ORDER BY total_points DESC;";
 
