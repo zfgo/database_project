@@ -60,7 +60,7 @@ printf($mask, "race name", "circuit name", "race date", "circuit length", "laps"
 printf($mask, "------------------------------", "------------------------------", "------------", "--------------", "----", "------------");
 while($row = mysqli_fetch_array($result, MYSQLI_BOTH))
 {
-    printf($mask, "row[race_name]", "row[circuit_name]", "row[race_date]", "row[circuit_length]", "row[laps]", "row[total_race_length]");
+    printf($mask, "$row[race_name]", "$row[circuit_name]", "$row[race_date]", "$row[circuit_length]", "$row[laps]", "$row[total_race_length]");
 }
 printf($mask, "------------------------------", "------------------------------", "------------", "--------------", "----", "------------");
 print "</pre>";
