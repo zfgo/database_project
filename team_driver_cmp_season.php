@@ -38,12 +38,12 @@ $team = mysqli_real_escape_string($conn, $team);
 //           WHERE t.name LIKE '".$team."' AND r.race_season_year = ".$season."
 //           GROUP BY d.driver_id, d.fname, d.lname, d.code, d.number
 //           ORDER BY total_points DESC;";
-$query = "SELECT CONCAT(d.fname, ' ', d.lname) as driver_name, d.code AS driver_code, d.number AS driver_num, YEAR(CURDATE())-YEAR(d.dob) AS driver_age, SUM(p.points) AS total_points, COUNT(r.race_race_id) AS num_races
+$query = "SELECT CONCAT(d.fname, ' ', d.lname) as driver_name, d.code AS driver_code, d.number AS driver_num, r.race_season_year-YEAR(d.dob) AS driver_age, SUM(p.points) AS total_points, COUNT(r.race_race_id) AS num_races
           FROM f1db.result r JOIN f1db.driver d ON r.driver_driver_id = d.driver_id
               JOIN f1db.team t ON d.team_team_id = t.team_id
               JOIN f1db.points p ON r.points_position = p.position
           WHERE t.name LIKE '".$team."' AND r.race_season_year = ".$season."
-          GROUP BY d.driver_id, d.fname, d.lname, d.code, d.number
+          GROUP BY d.driver_id, d.fname, d.lname, d.code, d.number, driver_age
           ORDER BY total_points DESC;";
 ?>
 
@@ -64,7 +64,7 @@ Result of query:
 $result = mysqli_query($conn, $query)
 or die(mysqli_error($conn));
 
-$mask = "| %-18s | %-12s | %-10s | %4s | %12s | %9s |\n";
+$mask = "| %-18s | %-12s | %10s | %4s | %12s | %9s |\n";
 print "<pre>";
 printf($mask, "------------------", "------------", "----------", "----", "------------", "---------");
 printf($mask, "driver name", "driver code", "driver num", "age", "total points", "num races");
