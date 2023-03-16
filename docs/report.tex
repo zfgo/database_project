@@ -71,7 +71,7 @@ NOTE: All links in this PDF should be clickable.
     
     \item \textbf{Project Title:} Formula One Database
 
-    \item \textbf{Connection Information}
+    \item \textbf{Connection Information:}
     \begin{itemize}
         \item \textbf{Port Number:} \texttt{3372}
 
@@ -90,7 +90,26 @@ NOTE: All links in this PDF should be clickable.
     \item \textbf{Project URL:}
     \href{https://ix.cs.uoregon.edu/~zfg/f1db/main.html}{\texttt{https://ix.cs.uoregon.edu/\~{}zfg/f1db/main.html}}
 
-    \item \textbf{Highlights:} TODO
+    \item \textbf{Highlights:}
+    \begin{itemize}
+        \item Population of the result table (440 rows).
+        \begin{itemize}
+            \item The population of all tables except for the season
+            table (1 row) and team table (10 rows) have at least 20 rows.
+        \end{itemize}
+
+        \item 8 applications:
+        \begin{itemize}
+            \item 6 applications to display driver and team results in
+            different and meaningful ways.
+
+            \item 1 application to display race information
+            \textit{without} driver or team results (i.e., race name, circuit
+            name, race length, number of laps, etc.).
+
+            \item 1 application to compare the drivers of a team.
+        \end{itemize}
+    \end{itemize}
 \end{itemize}
 
 \section{Summary}
@@ -142,17 +161,32 @@ always not null.
     \item \textbf{TEAM}: \myuline{team\_id}, name, power\_unit, chasis
     \begin{itemize}
         \item not null: power\_unit, chasis
+
     \end{itemize}
 
     \item \textbf{DRIVER}: \myuline{driver\_id},
     \textit{team\_team\_id}, code, number, fname, lname, dob
     \begin{itemize}
         \item not null: code, number, fname, lname
+
+        \item \textit{team\_team\_id} references \textbf{TEAM}
+
     \end{itemize}
 
     \item \textbf{RESULT}: \myuline{\textit{race\_race\_id}},
     \myuline{\textit{race\_season\_year}}, \myuline{\textit{driver\_driver\_id}},
     \textit{points\_position}, fastest\_lap
+    \begin{itemize}
+        \item \myuline{\textit{race\_race\_id}} references \textbf{RACE}
+
+        \item \myuline{\textit{race\_season\_year}} references
+        \textbf{SEASON} 
+
+        \item \myuline{\textit{driver\_driver\_id}} references
+        \textbf{DRIVER} 
+
+        \item \textit{points\_position} references \textbf{POINTS}
+    \end{itemize}
 
     \item \textbf{POINTS}: \myuline{position}, points
     \begin{itemize}
@@ -164,6 +198,10 @@ always not null.
     date, name 
     \begin{itemize}
         \item not null: date, name
+
+        \item \myuline{\textit{season\_year}} references \textbf{SEASON}
+
+        \item \textit{circuit\_circuit\_id} references \textbf{CIRCUIT}
     \end{itemize}
 
     \item \textbf{SEASON}: \myuline{year}
@@ -179,11 +217,6 @@ always not null.
 \section{List of Applications}
 
 \begin{enumerate}[label=(\arabic*)]
-    \item % driver_season_res.php -- DONE
-    input: driver, season
-
-    output: A single driver's race results across that season 
-
     \item % season_driver_results.php -- DONE
     input: season
 
@@ -193,17 +226,6 @@ always not null.
     input: season
 
     output: summary of the team (constructor) results of that season
-
-    \item % driver_avg_season.php -- DONE
-    input: driver, season
-
-    output: average results of that driver across that season
-
-    \item % team_driver_cmp_season.php -- DONE
-    input: team, season 
-
-    output: for each race in that season, compare the results of the
-    drivers in that team
 
     \item % race_driver_res.php -- DONE
     input: race, season 
@@ -215,11 +237,27 @@ always not null.
     
     output: summary of the team's results from that race in that season
 
+    \item % driver_season_res.php -- DONE
+    input: driver, season
+
+    output: A single driver's race results across that season 
+
+    \item % driver_avg_season.php -- DONE
+    input: driver, season
+
+    output: average results of that driver across that season
+
     \item % season_race_info.php -- DONE
     input: season
 
     output: summary of the races in that season (race name, circuit
     name, circuit length, number of laps, etc.)
+
+    \item % team_driver_cmp_season.php -- DONE
+    input: team, season 
+
+    output: for each race in that season, compare the results of the
+    drivers in that team
 
 \end{enumerate}
 
@@ -516,6 +554,17 @@ done two main things differently:
     engine, which is also used by Mclaren F1 Team, Aston Martin
     Cognizant F1 Team, and Williams Racing). This violates the ``one
     fact in one place'' motto.
+
+    \item Have a better system for calculating a team's position results 
+    based on one race. As it is, I use the \texttt{RANK() OVER} function
+    in MySQL, which ranks each team based on the sum of the points that
+    the drivers earned in a race. However, if two teams earned the same
+    number of points, then their position is the same. This does not
+    adhere to real life, where driver positions come into play when
+    teams have the same number of points. I would have liked to
+    implement this, but there were a great deal of rules that are
+    tricky, and I was struggling to get everything figured out. So
+    instead I used a simplified version.
 \end{itemize}
 Other than those two small changes, I am quite happy with how this
 project turned out, and I think that despite being somewhat simple, my
