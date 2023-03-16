@@ -1,0 +1,176 @@
+<html>
+<head>
+       <title>CS 451 Final Project</title>
+</head>
+
+<body bgcolor="white">
+
+
+<a href="main.html" >go to the main page</a> 
+
+<h2>Formula 1 Database Project</h2>
+
+CS 451 Final Project
+<br>
+Zane Globus-O'Harra
+<p>
+<hr>
+<p>
+
+Enter a season to display the final driver standings of that season.
+
+<form action="season_driver_results.php" method="POST">
+
+<label for="season">Season:</label>
+<input type="text" name="season"> <br>
+<input type="submit" value="submit">
+<input type="reset" value="erase">
+</form>
+
+<p>
+<a href="season_driver_results.txt" >Contents</a> of the PHP page that gets called.
+
+<hr>
+<p>
+
+Enter a season to display the final team standings of that season.
+
+<form action="season_team_results.php" method="POST">
+
+<label for="season">Season:</label>
+<input type="text" name="season"> <br>
+<input type="submit" value="submit">
+<input type="reset" value="erase">
+</form>
+
+<p>
+<a href="season_team_results.txt" >Contents</a> of the PHP page that gets called.
+
+<hr>
+<p>
+
+Enter a race and a season to display the driver standings for that race in that season.
+
+<form method="POST" action="race_driver_res.php">
+    <label for="race">Race:</label>
+    <input type="text" id="race" name="race">
+    <!-- Couldn't get the dropdown menu to work, sadly -->
+    <!--
+    <select id="race" name="race">
+        <?php
+        // connect to the DB
+        include('connectionData.txt');
+
+        $conn = mysqli_connect($server, $user, $pass, $dbname, $port)
+        or die('Error connecting to MySQL server.');
+
+        $sql = "SELECT DISTINCT r.name FROM f1db.race AS r";
+        $result = mysqli_query($conn, $sql);
+
+        // output race options as dropdown menu
+        while ($row = mysqli_fetch_array($result))
+        {
+            $therow = row['name'];
+            echo "<option value='.$therow.'>'.$therow.'</option>";
+        }
+
+        // close conn
+        mysqli_free_result($result);
+        mysqli_close($conn);
+
+        ?>
+    </select>
+    -->
+    <br>
+    <label for="season">Season:</label>
+    <input type="text" id="season" name="season">
+    <br>
+    <input type="submit" value="submit">
+    <input type="reset" value="erase">
+</form>
+
+<p>
+<a href="race_driver_res.txt" >Contents</a> of the PHP page that gets called.
+
+<hr>
+<p>
+
+Enter a race and a season to display the team standings for that race in that season.
+
+<form method="POST" action="race_team_res.php">
+    <label for="race">Race:</label>
+    <input type="text" id="race" name="race">
+    <br>
+    <label for="season">Season:</label>
+    <input type="text" id="season" name="season">
+    <br>
+    <input type="submit" value="submit">
+    <input type="reset" value="erase">
+</form>
+
+<p>
+<a href="race_team_res.txt" >Contents</a> of the PHP page that gets called.
+
+<hr>
+<p>
+
+Enter a driver and a season to display that driver's race results across the season.
+
+<form method="POST" action="driver_season_res.php">
+    <label for="driver">Driver Last Name:</label>
+    <input type="text" id="driver" name="driver">
+    <br>
+    <label for="season">Season:</label>
+    <input type="text" id="season" name="season">
+    <br>
+    <input type="submit" value="submit">
+    <input type="reset" value="erase">
+</form>
+
+<p>
+<a href="driver_season_res.txt" >Contents</a> of the PHP page that gets called.
+
+<hr>
+<p>
+
+Enter a season to display the average results of every driver over that season.
+
+<form method="POST" action="driver_avg_season.php">
+    <label for="season">Season:</label>
+    <input type="text" id="season" name="season">
+    <br>
+    <input type="submit" value="submit">
+    <input type="reset" value="erase">
+</form>
+
+<p>
+<a href="driver_avg_season.txt" >Contents</a> of the PHP page that gets called.
+
+<hr>
+<p>
+
+Enter a season to display information about each race of the season.
+
+<form method="POST" action="season_race_info.php">
+    <label for="season">Season:</label>
+    <input type="text" id="season" name="season">
+    <br>
+    <input type="submit" value="submit">
+    <input type="reset" value="erase">
+</form>
+
+<p>
+<a href="season_race_info.txt" >Contents</a> of the PHP page that gets called.
+
+<hr>
+
+
+<p>
+<a href="main.txt" >Contents</a> of this page.
+
+<p>
+<a href="connectionData.txt" >Contents</a> 
+of the connection data.
+
+</body>
+</html>
