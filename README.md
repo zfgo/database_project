@@ -5,6 +5,9 @@
 ### Author: Zane Globus-O'Harra
 ### CS 451 at the University of Oregon
 
+If you would like more information about this project, please read
+`report.pdf` in the `docs/` directory.
+
 ---
 
 >   The purpose of this project is to step through both the design and
