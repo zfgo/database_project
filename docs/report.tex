@@ -1,4 +1,3 @@
-
 \documentclass{article} % EXPAND THE PREAMBLE TO SEE ALL OF THE CODE
 \usepackage[utf8]{inputenc}
 \usepackage{amsmath, amsfonts} 
@@ -47,7 +46,7 @@
 
 \renewcommand{\arraystretch}{1} 
 
-\title{CS 451 Final Project}
+\title{CS 451 Final Project: Formula 1 Database}
 \author{Zane Globus-O'Harra}
 \date{\textit{23 March 2023}}
 
@@ -55,7 +54,9 @@
 \maketitle
 
 \tableofcontents
+\vspace{1.5cm}
 
+\noindent
 NOTE: All links in this PDF should be clickable.
 \newpage
 
@@ -68,17 +69,17 @@ NOTE: All links in this PDF should be clickable.
 
     \item \textbf{Connection Information}
     \begin{itemize}
-        \item \textbf{Port Number:} 3372
+        \item \textbf{Port Number:} \texttt{3372}
 
-        \item \textbf{Host Name:} ix
+        \item \textbf{Host Name:} \texttt{ix.cs.uoregon.edu}
 
         \item \textbf{Guest Account Login \& Password:} 
 
-        login: guest 
+        login: \texttt{guest}
 
-        password: guest 
+        password: \texttt{guest}
 
-        \item \textbf{Database Name:} f1db
+        \item \textbf{Database Name:} \texttt{f1db}
 
     \end{itemize}
 
@@ -396,6 +397,123 @@ website is repeated here:
 
 \section{Conclusion}
 
-TODO
+\subsection{Reflection About the Project}
+
+Looking back on what I have done in this project, I would say that the
+bulk of the work was split into three parts:
+\begin{enumerate}[label=(\arabic*)]
+    \item Designing the database.
+    \item Entering data.
+    \item Creating the applications.
+\end{enumerate}
+
+After creating my initial Chen diagram for part 1 of this project, I
+revised it and updated it for part 2 into a Crowsfoot diagram made in
+MySQL workbench so that I could easily turn the ER diagram into an
+actual database with tables. This part took a while because of the
+planning and thinking that was involved around how to organize the data,
+as well as what data I needed for the applications that I wanted to
+make.
+\medskip
+
+Once I had the design that I wanted, I then needed to enter the data. I
+decided to enter the data for one entire Formula 1 season. While I could
+have easily used the more recent 2022 season data, I decided to instead
+use the 2021 season data because that was a very exciting season with
+many thrilling races. The data that I used was from
+Wikipedia,\footnote{The data was mainly from 
+\href{https://en.wikipedia.org/wiki/2021_Formula_One_World_Championship}
+{\texttt{wikipedia.org/wiki/2021\_Formula\_One\_World\_Championship}},
+as well as the Wikipedia pages associated with each driver, race, and
+circuit.} and I could find no easy way to enter it in bulk (I'm sure if
+I searched harder I could have found a way, but oh well), so I entered
+it all manually. For the most part this wasn't too tedious, except for
+the results table, which was 440 rows.
+\medskip
+
+Once I had the data entered, I set about creating the applications. I
+already had an idea about what applications I wanted to make (my
+original application ideas are still listed in section 2.3), so I
+started with those ideas. Because I only had the data for one season,
+this meant that I couldn't compare a driver's results across seasons, so
+I had to change some of my applications to account for this.
+Additionally, I found it exceptionally difficult to create a query that
+would tell me the best and worst results of a driver, so I ended up
+abandoning that. 
+
+Instead, I added applications to display information about each race of
+a season, as well as some additional ways to display the results of each
+driver or team on a per race or per season basis.
+\medskip
+
+I also want to add some of my reasoning behind adding an ID field to
+many of the tables. While drivers could have been ID'd by their code, if
+I had added previous seasons, then there would be an overlap between the
+driver code of ``MSC'' for Mick Schumacher and his father, Michael
+Schumacher, who also raced in F1. There is similar reasoning for the
+other tables (e.g., races change names depending on the season, and so
+do the teams' names, and so on).
+
+\subsection{Simplifications}
+
+While my database captures a great deal of the scoring system and
+results system of Formula 1, it has nevertheless been simplified. Some
+things that my database simplifies are:
+\begin{itemize}
+    \item Tiebreakers: When two drivers have the same score at the end
+    of a season, their race results are ``counted back,'' and the driver
+    with higher ranking finishes wins the tie. There is no such thing in
+    my database, and ties are broken by the alphabetical order of
+    drivers' names.
+
+    \item Fastest laps: When a driver finishes a race in the top 10 and
+    has completed the fastest lap in that race, they earn an additional
+    point. My database includes no such rule.
+
+    \item Partially awarded points: When a race does not complete the
+    full race distance, half points are awarded. This occurred in the
+    2021 Belgian Grand Prix due to poor weather conditions. My database
+    does not have a rule to allow this.
+    
+    \item Sprint races: I won't go into the details of what a sprint
+    race entails, but it adds another layer of complexity to the point
+    system. 
+
+    \item Qualifying: A qualifying session precedes every race to
+    determine the order of the starting grid. Ideally my database would
+    include the results of this qualifying session as well, because then
+    I could create a query that could examine the positions gained or
+    lost in the race relative to a driver's starting position.
+\end{itemize}
+The list goes on, but these are the main areas that my database has
+simplified. 
+
+\subsection{Things I Would Have Done Differently}
+
+Aside from the simplifications mentioned in section 9.2, I would have
+done two main things differently:
+\begin{itemize}
+    \item Change fastest laps: As they currently are, fastest laps have
+    only one column and they are in units of minutes. I think that it
+    would have been better to split fastest lap into two columns, one
+    for the minutes and one for the seconds. While none of my
+    applications involved fastest laps, I think that this would have
+    made queries involving fastest laps easier to write (i.e., I
+    wouldn't have to convert 1.5 minutes to 1 minute and 30 seconds
+    because it would already be in the minute-second format).
+
+    \item Have an additional table for engines: In the team table, I
+    have the engine that each team uses as a column. However, some teams
+    buy engines from other teams, and thus use the same engine (e.g.,
+    Mercedes-AMG Petronas F1 Team produces the Mercedes-AMG F1 M12
+    engine, which is also used by Mclaren F1 Team, Aston Martin
+    Cognizant F1 Team, and Williams Racing). This violates the ``one
+    fact in one place'' motto.
+\end{itemize}
+Other than those two small changes, I am quite happy with how this
+project turned out, and I think that despite being somewhat simple, my
+database does a fairly good job at modeling a Formula 1 season.
+
+
 
 \end{document}
